@@ -5,6 +5,9 @@ import src.hydra
 import src.whatweb
 import src.herschel
 import src.recon_ng
+import src.dnsrecon
+import src.websocket_client
+import src.wfuzz
 
 def main():
     while True:
@@ -21,7 +24,9 @@ def main():
         print("10. hydra")
         print("11. gobuster")
         print("12. recon_ng")
-        print("13. Quit")
+        print("13. websocket-client")
+        print("14. wfuzz")
+        print("15. Quit")
         
         choice = input("Enter your choice: ")
         
@@ -38,7 +43,7 @@ def main():
         elif choice == "6":
             src.herschel.run_sqlmap()
         elif choice == "7":
-            src.herschel.run_dnsrecon()
+            src.dnsrecon.main()
         elif choice == "8":
             src.herschel.run_dnsenum()    
         elif choice == "9":
@@ -50,6 +55,10 @@ def main():
         elif choice == "12":
             src.recon_ng.main()
         elif choice == "13":
+            src.websocket_client.main()
+        elif choice == "14":
+            src.wfuzz.main()
+        elif choice == "15":
             break
         else:
             print("Invalid choice. Please try again.")
