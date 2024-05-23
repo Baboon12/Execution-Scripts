@@ -1,7 +1,10 @@
+import src.gobuster
 import src.metagoofil
 import src.wget
+import src.hydra
 import src.whatweb
 import src.herschel
+import src.recon_ng
 
 def main():
     while True:
@@ -15,7 +18,10 @@ def main():
         print("7. dnsrecon")
         print("8. dnsenum")
         print("9. dirsearch")
-        print("10. Quit")
+        print("10. hydra")
+        print("11. gobuster")
+        print("12. recon_ng")
+        print("13. Quit")
         
         choice = input("Enter your choice: ")
         
@@ -38,6 +44,12 @@ def main():
         elif choice == "9":
             src.herschel.run_dirsearch()
         elif choice == "10":
+            src.hydra.main()
+        elif choice == "11":
+            src.gobuster.main()
+        elif choice == "12":
+            src.recon_ng.main()
+        elif choice == "13":
             break
         else:
             print("Invalid choice. Please try again.")
