@@ -32,9 +32,9 @@ def main():
         print("13. websocket-client")
         print("14. wfuzz")
         print("15. Curl")
-        print("16. httprint")
+        # print("16. httprint")
         #print("17. Unicornscan")  
-        print("17. Quit")
+        print("16. Quit")
         
         choice = input("Enter your choice: ")
         
@@ -68,9 +68,9 @@ def main():
             src.wfuzz.main()
         elif choice == "15":
             src.curl.curl_operations()  
-        elif choice == "16":
-            for server in servers:
-                src.httprint.main()
+        # elif choice == "16":
+        #     for server in servers:
+        #         src.httprint.main()
         # elif choice == "17":
         #     src.unicornscan.main()  
         elif choice == "17":
