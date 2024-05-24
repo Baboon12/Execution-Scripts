@@ -1,33 +1,48 @@
 import os
 
-# Define target servers
-servers = ["www.instagram.com", "www.example2.com", "www.example3.com"]
+def run_httprint(server, signatures_file, output_dir):
+    """
+    Run Httprint analysis on a given server.
 
-# Path to signatures file
-signatures_file = "/usr/share/httprint/signatures.txt"  # Update this path if needed
+    Args:
+        server (str): The URL of the server to analyze.
+        signatures_file (str): Path to the signatures file for Httprint.
+        output_dir (str): Output directory for reports.
 
-# Output directory for reports
-output_dir = "httprint_reports"
-os.makedirs(output_dir, exist_ok=True)
-
-# Loop through each server and run Httprint
-for server in servers:
+    Returns:
+        None
+    """
     server_clean = server.translate(str.maketrans("", "", '[:punct:]'))
     print(f"Analyzing {server}...")
 
-    # Identify web server version and type
-    os.system(f"httprint -h {server} -s {signatures_file} > {output_dir}/{server_clean}_basic.txt")
+    # Run Httprint commands
+    commands = [
+        f"httprint -h {server} -s {signatures_file} > {output_dir}/{server_clean}_basic.txt",
+        f"httprint -h {server} -s {signatures_file} -o {output_dir}/{server_clean}_report.html",
+        f"httprint -h {server} -s {signatures_file} -oc {output_dir}/{server_clean}_report.csv",
+        f"httprint -h {server} -s {signatures_file} -ox {output_dir}/{server_clean}_report.xml",
+        f"httprint -h {server} -s {signatures_file} -noautossl > {output_dir}/{server_clean}_detailed.txt"
+    ]
 
-    # Generate HTML report
-    os.system(f"httprint -h {server} -s {signatures_file} -o {output_dir}/{server_clean}_report.html")
+    for command in commands:
+        os.system(command)
 
-    # Generate CSV report
-    os.system(f"httprint -h {server} -s {signatures_file} -oc {output_dir}/{server_clean}_report.csv")
+def main():
+    # Define target servers
+    servers = ["www.instagram.com", "www.example2.com", "www.example3.com"]
 
-    # Generate XML report
-    os.system(f"httprint -h {server} -s {signatures_file} -ox {output_dir}/{server_clean}_report.xml")
+    # Path to signatures file
+    signatures_file = "/usr/share/httprint/signatures.txt"  # Update this path if needed
 
-    # Detailed server analysis with no automatic SSL detection
-    os.system(f"httprint -h {server} -s {signatures_file} -noautossl > {output_dir}/{server_clean}_detailed.txt")
+    # Output directory for reports
+    output_dir = "httprint_reports"
+    os.makedirs(output_dir, exist_ok=True)
 
-print("Httprint analysis completed for all servers.")
+    # Loop through each server and run Httprint
+    for server in servers:
+        run_httprint(server, signatures_file, output_dir)
+
+    print("Httprint analysis completed for all servers.")
+
+if __name__ == "__main__":
+    main()

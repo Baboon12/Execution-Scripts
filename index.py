@@ -79,7 +79,7 @@ def main():
             src.curl.curl_operations()  
         elif choice == "16":
             for server in servers:
-                src.httprint.httprint_operations(server, signatures_file, output_dir)
+                src.httprint.main()
         elif choice == "17":
             src.unicornscan.main()  
         elif choice == "18":
