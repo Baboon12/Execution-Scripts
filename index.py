@@ -14,16 +14,7 @@ import src.httprint
 import src.unicornscan  
 
 def main():
-    # Define target servers
-    servers = ["www.instagram.com", "www.example2.com", "www.example3.com"]
-
-    # Path to signatures file
-    signatures_file = ""  
-
-    # Output directory for reports
-    output_dir = "httprint_reports"
-    os.makedirs(output_dir, exist_ok=True)
-
+    
     while True:
         print("Select an option:")
         print("1. Running metagoofil")
