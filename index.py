@@ -42,8 +42,8 @@ def main():
         print("14. wfuzz")
         print("15. Curl")
         print("16. httprint")
-        print("17. Unicornscan")  
-        print("18. Quit")
+        #print("17. Unicornscan")  
+        print("17. Quit")
         
         choice = input("Enter your choice: ")
         
