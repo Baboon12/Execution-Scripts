@@ -80,9 +80,9 @@ def main():
         elif choice == "16":
             for server in servers:
                 src.httprint.main()
+        # elif choice == "17":
+        #     src.unicornscan.main()  
         elif choice == "17":
-            src.unicornscan.main()  
-        elif choice == "18":
             break
         else:
             print("Invalid choice. Please try again.")

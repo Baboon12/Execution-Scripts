@@ -28,8 +28,9 @@ def run_httprint(server, signatures_file, output_dir):
         os.system(command)
 
 def main():
-    # Define target servers
-    servers = ["www.instagram.com", "www.example2.com", "www.example3.com"]
+    # Take input for target servers
+    servers_input = input("Enter target servers (separated by commas): ")
+    servers = [server.strip() for server in servers_input.split(",")]
 
     # Path to signatures file
     signatures_file = "/usr/share/httprint/signatures.txt"  # Update this path if needed
